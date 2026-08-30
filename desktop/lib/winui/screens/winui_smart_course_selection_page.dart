@@ -1134,9 +1134,9 @@ class _WinUISmartCourseSelectionPageState
   ) {
     const weekdays = ['一', '二', '三', '四', '五', '六', '日'];
     const sessions = 10; // 10节课（删除11-12节）
-    const double cellHeight = 52.0; // 适中的单元格高度
-    const double headerHeight = 32.0;
-    const double sessionColumnWidth = 28.0;
+    const double cellHeight = 64.0; // 加大单元格高度以容纳更大字号
+    const double headerHeight = 36.0;
+    const double sessionColumnWidth = 34.0;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(8),
@@ -1206,7 +1206,10 @@ class _WinUISmartCourseSelectionPageState
                 decoration: BoxDecoration(
                   border: Border(right: BorderSide(color: borderColor)),
                 ),
-                child: Text('节', style: theme.typography.bodyStrong),
+                child: Text(
+                  '节',
+                  style: theme.typography.bodyStrong?.copyWith(fontSize: 13),
+                ),
               ),
               ...weekdays.map(
                 (d) => Container(
@@ -1215,7 +1218,10 @@ class _WinUISmartCourseSelectionPageState
                   decoration: BoxDecoration(
                     border: Border(right: BorderSide(color: borderColor)),
                   ),
-                  child: Text(d, style: theme.typography.bodyStrong),
+                  child: Text(
+                    d,
+                    style: theme.typography.bodyStrong?.copyWith(fontSize: 13),
+                  ),
                 ),
               ),
             ],
@@ -1236,7 +1242,10 @@ class _WinUISmartCourseSelectionPageState
                   decoration: BoxDecoration(
                     border: Border(right: BorderSide(color: borderColor)),
                   ),
-                  child: Text('$session', style: theme.typography.caption),
+                  child: Text(
+                  '$session',
+                  style: theme.typography.caption?.copyWith(fontSize: 12),
+                ),
                 ),
                 for (int day = 1; day <= 7; day++)
                   GestureDetector(
@@ -1442,7 +1451,7 @@ class _WinUISmartCourseSelectionPageState
           borderRadius: BorderRadius.circular(3),
           border: Border.all(color: theme.accentColor.withValues(alpha: 0.5)),
         ),
-        padding: const EdgeInsets.all(3),
+        padding: const EdgeInsets.all(5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -1450,7 +1459,8 @@ class _WinUISmartCourseSelectionPageState
               course.courseName,
               style: theme.typography.caption?.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: 10,
+                fontSize: 13,
+                height: 1.25,
               ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
@@ -1460,7 +1470,7 @@ class _WinUISmartCourseSelectionPageState
               Text(
                 tp.classroomName,
                 style: theme.typography.caption?.copyWith(
-                  fontSize: 9,
+                  fontSize: 11,
                   color: theme.inactiveColor,
                 ),
                 maxLines: 1,
@@ -1490,10 +1500,10 @@ class _WinUISmartCourseSelectionPageState
       child: Container(
         decoration: BoxDecoration(
           color: theme.accentColor.withValues(alpha: 0.16),
-          borderRadius: BorderRadius.circular(3),
+          borderRadius: BorderRadius.circular(4),
           border: Border.all(color: theme.accentColor.withValues(alpha: 0.45)),
         ),
-        padding: const EdgeInsets.all(3),
+        padding: const EdgeInsets.all(5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -1502,7 +1512,8 @@ class _WinUISmartCourseSelectionPageState
               style: theme.typography.caption?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: theme.accentColor,
-                fontSize: 10,
+                fontSize: 13,
+                height: 1.25,
               ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
@@ -1511,7 +1522,7 @@ class _WinUISmartCourseSelectionPageState
             Text(
               course.jasm ?? course.skjs ?? '',
               style: theme.typography.caption?.copyWith(
-                fontSize: 8,
+                fontSize: 11,
                 color: theme.inactiveColor,
               ),
               maxLines: 1,
@@ -1542,10 +1553,10 @@ class _WinUISmartCourseSelectionPageState
       child: Container(
         decoration: BoxDecoration(
           color: Colors.green.withValues(alpha: 0.2),
-          borderRadius: BorderRadius.circular(3),
+          borderRadius: BorderRadius.circular(4),
           border: Border.all(color: Colors.green.withValues(alpha: 0.5)),
         ),
-        padding: const EdgeInsets.all(3),
+        padding: const EdgeInsets.all(5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -1557,20 +1568,21 @@ class _WinUISmartCourseSelectionPageState
                     style: theme.typography.caption?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Colors.green,
-                      fontSize: 10,
+                      fontSize: 13,
+                      height: 1.25,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                Icon(FluentIcons.add_event, size: 10, color: Colors.green),
+                Icon(FluentIcons.add_event, size: 12, color: Colors.green),
               ],
             ),
             const Spacer(),
             Text(
               course.jasm ?? '',
               style: theme.typography.caption?.copyWith(
-                fontSize: 8,
+                fontSize: 11,
                 color: theme.inactiveColor,
               ),
               maxLines: 1,
